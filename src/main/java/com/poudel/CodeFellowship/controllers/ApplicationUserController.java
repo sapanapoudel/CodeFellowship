@@ -40,7 +40,20 @@ public class ApplicationUserController {
     @GetMapping ("/login")
     public String getLoginPage() {
         return "login";
+    }
 
+
+    @PostMapping("/login")
+    public RedirectView enterPassword(String username, String password) {
+        //If username and password match with what it is in database, redirect to my profile
+        ApplicationUser thisUser = applicationUserRepository.findByUsernameAndPassword(username,
+                passwordEncoder.encode(password));
+        if(thisUser == null) {
+            return new RedirectView("/signup");
+        }
+        Authentication authentication = new UsernamePasswordAuthenticationToken(thisUser, password);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        return new RedirectView("/myprofile");
     }
 
     @GetMapping("/signup")
@@ -49,9 +62,9 @@ public class ApplicationUserController {
     }
 
     @GetMapping("/users/{id}")
-    public String getOneApplicationUser(@PathVariable long id, Model m) {
-        ApplicationUser a  = applicationUserRepository.findById(id).get();
-        m.addAttribute("user", a);
+    public String getOneApplicationUser(@PathVariable long id, Principal p, Model m) {
+        m.addAttribute("allUser", applicationUserRepository.findById(id).get());
+        m.addAttribute("user", p);
         return "oneUser";
     }
 

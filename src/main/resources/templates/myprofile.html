@@ -5,9 +5,9 @@
     <title>Hello</title>
 </head>
 <body>
-<div th:if="${user}">
-    Hello, <span th:text="${user.name}"></span>! Welcome
+<div th:replace="fragments/fragments :: nav">
 </div>
+
 
 </body>
 </html>
