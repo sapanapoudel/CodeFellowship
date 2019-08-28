@@ -4,6 +4,7 @@
     <a href="/"><h1>Codefellowship</h1></a>
     <nav th:if="${user}">
         Hello, <span th:text="${user.name}"></span>! Welcome
+        <a href="/posts">Post your comments</a>
         <a href="/logout">Log out</a>
     </nav>
 
