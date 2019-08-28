@@ -6,11 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-<h1>Codefellowship, Build your Network!</h1>
-<div th:unless="${user}">
-    <a href="/login">Log in</a><br>
-    <a href="/signup">Sign up</a>
-
+<div th:replace="fragments/fragments :: nav">
 </div>
 
 </body>
