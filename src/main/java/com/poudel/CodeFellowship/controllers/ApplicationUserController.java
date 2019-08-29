@@ -92,10 +92,10 @@ public class ApplicationUserController {
     }
 
 
-    @PostMapping("/users/follow")
-    public RedirectView addFollowedUsers(Principal p, long followeduser) {
+    @PostMapping("/users/follow/{followPath}")
+    public RedirectView addFollowedUsers(@PathVariable long followPath,  Principal p) {
         ApplicationUser followingUser = applicationUserRepository.findByUsername(p.getName());
-        followingUser.addFollows(applicationUserRepository.findById(followeduser).get());
+        followingUser.addFollows(applicationUserRepository.findById(followPath).get());
         applicationUserRepository.save(followingUser);
         return new RedirectView("/myprofile");
     }
