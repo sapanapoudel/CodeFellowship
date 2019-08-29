@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class ApplicationUser implements UserDetails {
@@ -23,6 +24,17 @@ public class ApplicationUser implements UserDetails {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "appUser")
     List<Post> posts;
+
+    @ManyToMany
+    @JoinTable(
+            name="user_follows",
+            joinColumns = {@JoinColumn(name = "primaryUser")},
+            inverseJoinColumns = { @JoinColumn(name = "followedUser")}
+    )
+    Set<ApplicationUser> userThatIFollow;
+
+    @ManyToMany (mappedBy = "userThatIFollow")
+    Set<ApplicationUser> userThatFollowMe;
 
     public ApplicationUser(String username, String password, String firstName,
                            String lastName, Date dateOfBirth, String bio) {
@@ -117,5 +129,26 @@ public class ApplicationUser implements UserDetails {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    public void addFollows(ApplicationUser followedUser ) {
+        userThatIFollow.add(followedUser);
+    }
+
+    public Set<ApplicationUser> getFollowedUser() {
+        return this.userThatIFollow;
+    }
+
+    public String toString() {
+        StringBuilder followedUserString = new StringBuilder();
+        if(this.userThatIFollow.size() > 0) {
+            followedUserString.append("Likes");
+            for(ApplicationUser followedUser : this.userThatIFollow) {
+                followedUserString.append(followedUser.firstName);
+                followedUserString.append(", ");
+            }
+            followedUserString.delete(followedUserString.length() - 2, followedUserString.length());
+        }
+        return String.format("%s follows %s", this.firstName, followedUserString.toString());
     }
 }

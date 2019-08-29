@@ -85,4 +85,24 @@ public class ApplicationUserController {
         return "allUsers";
     }
 
+    @GetMapping("users/follows")
+    public String addFollows(Model model) {
+        model.addAttribute("users", applicationUserRepository.findAll());
+        return "addFollows";
+    }
+
+
+    @PostMapping("/users/follow")
+    public RedirectView addFollowedUsers(Principal p, long followeduser) {
+        ApplicationUser followingUser = applicationUserRepository.findByUsername(p.getName());
+        followingUser.addFollows(applicationUserRepository.findById(followeduser).get());
+        applicationUserRepository.save(followingUser);
+        return new RedirectView("/myprofile");
+    }
+
+    @GetMapping("/feed")
+    public  String getFeed() {
+        return "feed";
+    }
+
 }
