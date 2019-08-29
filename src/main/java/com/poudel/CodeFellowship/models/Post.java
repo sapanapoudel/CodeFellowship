@@ -14,9 +14,8 @@ public class Post {
     @ManyToOne
     ApplicationUser appUser;
 
-    public Post(String body, Timestamp createdAt, ApplicationUser appUser){
+    public Post(String body, ApplicationUser appUser){
         this.body = body;
-        this.createdAt = createdAt;
         this.appUser = appUser;
     }
 
@@ -55,6 +54,6 @@ public class Post {
     }
 
     public String toString () {
-        return String.format("%s at %s has posted %s", this.appUser, this.createdAt, this.body);
+        return String.format("%s", this.body);
     }
 }

@@ -13,7 +13,7 @@ import java.util.List;
 public class ApplicationUser implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    long id;
     String username;
     String password;
     String firstName;
@@ -36,11 +36,11 @@ public class ApplicationUser implements UserDetails {
 
     public ApplicationUser(){}
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
