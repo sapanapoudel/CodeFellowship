@@ -3,6 +3,7 @@
 <div th:fragment="nav">
     <a href="/"><h1>Codefellowship</h1></a>
     <nav th:if="${user}">
+        <a href="/allUsers">All users</a>
         <a href="/posts">Make your post</a>
         <a href="/logout">Log out</a>
         Hello, <span th:text="${user.name}"></span>! Welcome

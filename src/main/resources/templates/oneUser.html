@@ -8,6 +8,11 @@
 <div th:replace="fragments/fragments :: nav">
 </div>
 <img src="./static/profilePicture.png" />
-<h3 th:text="${allUser.username}"></h3>
+<h3 th:text="${oneUser.username}"></h3>
+<!--<img src="./static/profilePicture.png" />-->
+<p>First Name:<span th:text="${oneUser.firstName}"></span></p>
+<p>Last Name:<span th:text="${oneUser.lastName}"></span></p>
+<p>Date of Birth:<span th:text="${oneUser.dateOfBirth}"></span></p>
+<p>Bio:<span th:text="${oneUser.bio}"></span></p>
 </body>
 </html>
