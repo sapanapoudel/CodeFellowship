@@ -7,16 +7,18 @@
 <body>
 <div th:insert="fragments/fragments :: nav">
 </div>
-<!--<div>-->
-<!--    <h3>Here is your profile Information</h3>-->
-<!--    <img src="static/profilePicture.png" />-->
-<!--    <p>First Name:<span th:text="${user.firstName}"></span></p>-->
-<!--    <p>Last Name:<span th:text="${user.lastName}"></span></p>-->
-<!--    <p>Date of Birth:<span th:text="${user.dateOfBirth}"></span></p>-->
-<!--    <p>Bio:<span th:text="${user.bio}"></span></p>-->
+<div>
+    <h3>Here is your profile Information</h3>
+    <img src="./static/profilePicture.png" />
+    <p>First Name:<span th:text="${thisuser.firstName}"></span></p>
+    <p>Last Name:<span th:text="${thisuser.lastName}"></span></p>
+    <p>Date of Birth:<span th:text="${thisuser.dateOfBirth}"></span></p>
+    <p>Bio:<span th:text="${thisuser.bio}"></span></p>
 
-<!--</div>-->
+    <ul>
+        <li th:each="post : ${thisuser.posts}" th:text="${post}"></li>
+    </ul>
 
-
+</div>
 </body>
 </html>

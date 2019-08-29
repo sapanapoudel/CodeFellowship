@@ -70,8 +70,10 @@ public class ApplicationUserController {
 
     @GetMapping("/myprofile")
     public String getToMyProfile(Principal p, Model m) {
+        m.addAttribute("thisuser", applicationUserRepository.findByUsername(p.getName()));
         m.addAttribute("user", p);
         return "myprofile";
     }
+
 
 }

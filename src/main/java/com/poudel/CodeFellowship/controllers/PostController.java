@@ -9,10 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
-
-import javax.xml.crypto.dsig.Manifest;
 import java.security.Principal;
-import java.sql.Timestamp;
+
 
 @Controller
 public class PostController {
@@ -29,11 +27,11 @@ public class PostController {
     }
 
     @PostMapping("/posts")
-    public RedirectView createPosts(String body, Timestamp createdAt, Principal p) {
+    public RedirectView createPosts(String body, Principal p) {
         ApplicationUser loggeduser = applicationUserRepository.findByUsername(p.getName());
-        Post post = new Post(body, createdAt, loggeduser);
+        Post post = new Post(body, loggeduser);
         postRepository.save(post);
-        return new RedirectView("/myprofile" + loggeduser.getId());
+        return new RedirectView("/myprofile");
     }
 
 }
