@@ -97,7 +97,7 @@ public class ApplicationUserController {
         ApplicationUser followingUser = applicationUserRepository.findByUsername(p.getName());
         followingUser.addFollows(applicationUserRepository.findById(followPath).get());
         applicationUserRepository.save(followingUser);
-        return new RedirectView("/myprofile");
+        return new RedirectView("/allUsers");
     }
 
     @GetMapping("/feed")

@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<div th:fragment="nav">
-    <a href="/"><h1>Codefellowship</h1></a>
-    <nav th:if="${user}">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<div class="container">
+    <nav th:if="${user}" class="navbar navbar-expand-lg navbar-light bg-light">
+        <a href="/">Codefellowship</a>
         <a href="/myprofile">My profile</a>
         <a href="/allUsers">All users</a>
         <a href="/posts">Post</a>
         <a href="/logout">Log out</a>
-        Hello, <span th:text="${user.name}"></span>! Welcome
+   <p>Hello, <span th:text="${user.name}"></span>! Welcome</p>
     </nav>
-
-    <nav th:unless="${user}">
-        <a href="/login">Log in</a>
+</div>
+<div class="container">
+    <nav th:unless="${user}" class="navbar navbar-expand-lg navbar-light bg-light">
+        <a href="/">Codefellowship</a><a href="/login">Log in</a>
         <a href="/signup">Sign up</a>
-
     </nav>
-
 </div>
 </html>
