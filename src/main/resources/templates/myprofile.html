@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Hello</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 <div th:insert="fragments/fragments :: nav">
 </div>
 <div>
-    <h3>Here is your profile Information</h3>
-    <img src="./static/profilePicture.png" />
+    <h5>Here is your profile Information</h5>
+    <img src="data:image/png;base64,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" />
     <p>First Name:<span th:text="${thisuser.firstName}"></span></p>
     <p>Last Name:<span th:text="${thisuser.lastName}"></span></p>
     <p>Date of Birth:<span th:text="${thisuser.dateOfBirth}"></span></p>
     <p>Bio:<span th:text="${thisuser.bio}"></span></p>
-
     <ul>
         <li th:each="post : ${thisuser.posts}" th:text="${post}"></li>
     </ul>
-
 </div>
 </body>
 </html>
