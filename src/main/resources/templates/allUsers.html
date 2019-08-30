@@ -12,11 +12,8 @@
 </div>
 <div th:each="oneUser: ${allUsers}">
     <p>
-<!--    <h3><a th:href="${'/users/' + user.id}" th:text="${user.firstName}" ></a></h3>-->
     <h3><a th:href="${'/users/' + oneUser.id}"  th:if="${oneUser.firstName != user.getName()}">
     <span th:text= "${oneUser.firstName}" ></span></a></h3>
-<!--    <li th:each="post : ${thisuser.posts}" th:text="${post}"></li>-->
-<!--    <p th:each="followingUser : {thisuser.followingUser}" th>text="${followUser}"></p>-->
 </div>
 
 
