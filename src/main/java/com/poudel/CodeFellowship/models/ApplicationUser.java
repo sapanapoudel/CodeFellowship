@@ -1,6 +1,4 @@
 package com.poudel.CodeFellowship.models;
-
-import javafx.geometry.Pos;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -138,17 +136,4 @@ public class ApplicationUser implements UserDetails {
     public Set<ApplicationUser> getFollowedUser() {
         return this.userThatIFollow;
     }
-
-//    public String toString() {
-//        StringBuilder followedUserString = new StringBuilder();
-//        if(this.userThatIFollow.size() > 0) {
-//            followedUserString.append("follows");
-//            for(ApplicationUser followedUser : this.userThatIFollow) {
-//                followedUserString.append(followedUser.firstName);
-//                followedUserString.append(", ");
-//            }
-//            followedUserString.delete(followedUserString.length() - 2, followedUserString.length());
-//        }
-//        return String.format("%s follows %s", this.firstName, followedUserString.toString());
-//    }
 }

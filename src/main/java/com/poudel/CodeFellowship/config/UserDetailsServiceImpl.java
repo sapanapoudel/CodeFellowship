@@ -1,6 +1,5 @@
 package com.poudel.CodeFellowship.config;
 
-import com.poudel.CodeFellowship.controllers.ApplicationUserController;
 import com.poudel.CodeFellowship.models.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
