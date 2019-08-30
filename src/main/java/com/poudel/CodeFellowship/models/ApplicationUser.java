@@ -139,16 +139,16 @@ public class ApplicationUser implements UserDetails {
         return this.userThatIFollow;
     }
 
-    public String toString() {
-        StringBuilder followedUserString = new StringBuilder();
-        if(this.userThatIFollow.size() > 0) {
-            followedUserString.append("Likes");
-            for(ApplicationUser followedUser : this.userThatIFollow) {
-                followedUserString.append(followedUser.firstName);
-                followedUserString.append(", ");
-            }
-            followedUserString.delete(followedUserString.length() - 2, followedUserString.length());
-        }
-        return String.format("%s follows %s", this.firstName, followedUserString.toString());
-    }
+//    public String toString() {
+//        StringBuilder followedUserString = new StringBuilder();
+//        if(this.userThatIFollow.size() > 0) {
+//            followedUserString.append("follows");
+//            for(ApplicationUser followedUser : this.userThatIFollow) {
+//                followedUserString.append(followedUser.firstName);
+//                followedUserString.append(", ");
+//            }
+//            followedUserString.delete(followedUserString.length() - 2, followedUserString.length());
+//        }
+//        return String.format("%s follows %s", this.firstName, followedUserString.toString());
+//    }
 }

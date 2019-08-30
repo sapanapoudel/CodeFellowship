@@ -97,11 +97,15 @@ public class ApplicationUserController {
         ApplicationUser followingUser = applicationUserRepository.findByUsername(p.getName());
         followingUser.addFollows(applicationUserRepository.findById(followPath).get());
         applicationUserRepository.save(followingUser);
-        return new RedirectView("/allUsers");
+        return new RedirectView("/feed");
     }
 
     @GetMapping("/feed")
-    public  String getFeed() {
+    public  String getFeed(Principal p, Model model) {
+        ApplicationUser principleUser = applicationUserRepository.findByUsername(p.getName());
+        System.out.println("TEST TEST TEST " + principleUser.getFollowedUser());
+        model.addAttribute("userThatIFollow", principleUser.getFollowedUser());
+        model.addAttribute("user", p);
         return "feed";
     }
 
